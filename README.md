@@ -61,3 +61,17 @@ Therefore, when one of the input is more than 2d, we need to sum up the extra di
 e.g. a.shape= (6,6,5,4) matmul b.shape=(4,3)
 
 after a naive calculation grad_b is now (6,6,4,3), we need to sum up the first 2 dimensions.
+
+#### List["Tensor"]
+
+- `List[Tensor]` is a straightforward type hint that requires the `Tensor` class to be available at the point of definition.
+- `List["Tensor"]` is a forward-declared type hint that allows the `Tensor` class to be defined later in the code, helping to avoid circular import issues.
+- In Python 3.7 and above, you can use the `from __future__ import annotations` import to automatically treat all annotations as forward declarations, removing the need to quote type hints.
+
+#### Topological sort
+
+Recrusive function: for every node, deal with all its inputs first, then add the node to the sort results. 
+
+Input order of nodes does not matter
+
+Need to maintain a `visited` Set
